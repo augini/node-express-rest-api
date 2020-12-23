@@ -24,6 +24,7 @@ export const getUser = (req, res) => {
 };
 
 export const createUser = (req, res) => {
+  console.log(req);
   const id = uuidv4();
   const user = { id, ...req.body };
   users.push(user);
