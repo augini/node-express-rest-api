@@ -18,14 +18,18 @@ export const getPost = (req, res) => {
 
 export const createPost = (req, res) => {
   const id = uuidv4();
-  console.log({ req });
   if (req.body.hasOwnProperty("title") && req.body.hasOwnProperty("body")) {
-    console.log("has both");
     const { title, body } = req.body;
     if (title.trim() !== "" && body.trim() !== "") {
       const post = { id, title: title, body: body };
       posts.push(post);
       res.send(`Post with the title ${title} has been added`);
+    } else {
+      res.status(500).send({
+        status: "Post not added",
+        message:
+          "Post should have title and body and neither of them can be empty",
+      });
     }
   } else {
     res.status(500).send({
