@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from "uuid";
 import posts from "../initialdata/posts.js";
 
 export const getPosts = (req, res) => {
-  console.log(posts);
   res.send(posts);
 };
 
