@@ -18,14 +18,27 @@ export const getPost = (req, res) => {
 
 export const createPost = (req, res) => {
   const id = uuidv4();
-  const post = { id, ...req.body };
-  posts.push(post);
-  res.send(`Post with the title ${req.body.title} has been added`);
+  console.log({ req });
+  if (req.body.hasOwnProperty("title") && req.body.hasOwnProperty("body")) {
+    console.log("has both");
+    const { title, body } = req.body;
+    if (title.trim() !== "" && body.trim() !== "") {
+      const post = { id, title: title, body: body };
+      posts.push(post);
+      res.send(`Post with the title ${title} has been added`);
+    }
+  } else {
+    res.status(500).send({
+      status: "Post not added",
+      message:
+        "Post should have title and body and neither of them can be empty",
+    });
+  }
 };
 
 export const deletePost = (req, res) => {
   const id = req.params.id;
-  posts.filter((post) => post.id.toString() !== id);
+  posts = posts.filter((post) => post.id.toString() !== id);
   const { title } = posts.find((post) => post.id.toString() === id);
   res.send(`Post with the id ${id} and title ${title} has been deleted`);
 };
