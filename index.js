@@ -13,7 +13,7 @@ app.use("/posts", postsRoutes);
 app.get("/", (req, res) => {
   res.json({
     status: "success",
-    message: "Server for the state management class",
+    message: "Server for the React and React Native Class",
   });
 });
 
