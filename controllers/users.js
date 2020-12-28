@@ -6,7 +6,7 @@ export let users = [
     firstName: "John",
     lastName: "Doe",
     age: "25",
-  },
+  },  
 ];
 
 export const getUsers = (req, res) => {

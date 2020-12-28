@@ -20,14 +20,15 @@ export const getPost = (req, res) => {
 
 export const createPost = (req, res) => {
   const id = uuidv4();
+  console.log(req.body);
   const { title, body } = req.body;
+  res.header("Access-Control-Allow-Origin", "*");
+
   if (title && body && title.trim() !== "" && body.trim() !== "") {
     const post = { id, title: title, body: body };
     posts.push(post);
-    res.header("Access-Control-Allow-Origin", "*");
-    res.send(`Post with the title ${title} has been added`);
+    res.json(`Post with the title ${title} has been added`);
   } else {
-    res.header("Access-Control-Allow-Origin", "*");
     res.status(500).send({
       status: "Post not added",
       message:
