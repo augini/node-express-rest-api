@@ -38,7 +38,7 @@ export const createPost = (req, res) => {
 };
 
 export const deletePost = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
   posts = posts.filter((post) => post.id.toString() !== id);
   const { title } = posts.find((post) => post.id.toString() === id);
   res.header("Access-Control-Allow-Origin", "*");
@@ -46,7 +46,7 @@ export const deletePost = (req, res) => {
 };
 
 export const updatePost = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
   const post = posts.find((post) => post.id.toString() === id);
   const prevTitle = post.Title;
   const { title, body } = req.body;
