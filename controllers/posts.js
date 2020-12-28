@@ -53,7 +53,9 @@ export const updatePost = (req, res) => {
   if (title) post.title = title;
   if (body) post.body = body;
   res.header("Access-Control-Allow-Origin", "*");
-  res.send(
-    `Post with the id ${id} has been updated from ${prevTitle} to ${title}`
-  );
+
+  res.status(500).send({
+    status: "Post not added",
+    message: `Post with the id ${id} has been updated from ${prevTitle} to ${title}`,
+  });
 };
