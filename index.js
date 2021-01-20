@@ -4,6 +4,8 @@ import cors from "cors";
 import usersRoutes from "./routes/users.js";
 import postsRoutes from "./routes/posts.js";
 import todosRoutes from "./routes/todos.js";
+import booksRoutes from "./routes/books.js";
+
 const app = express();
 const PORT = 5000;
 
@@ -13,6 +15,7 @@ app.use(bodyParser.json());
 app.use("/users", usersRoutes);
 app.use("/posts", postsRoutes);
 app.use("/todos", todosRoutes);
+app.use("/books", booksRoutes);
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
