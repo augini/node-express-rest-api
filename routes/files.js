@@ -1,9 +1,10 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { getBooks } from '../controllers/books.js';
+import { getImage, postImage } from '../controllers/files.js';
 
 const router = express.Router();
 
-router.get('/', getBooks);
+router.get('/', getImage);
+router.post('/', postImage);
 
 export default router;
